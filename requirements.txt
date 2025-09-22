@@ -1,0 +1,11 @@
+fastapi
+uvicorn
+pdfplumber
+PyMuPDF
+nltk
+scikit-learn
+jinja2
+python-multipart
+python-dotenv
+tavily-python
+spacy
