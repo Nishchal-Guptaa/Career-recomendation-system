@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Resume to Jobs</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; }
+        .job { border: 1px solid #ccc; padding: 15px; margin-bottom: 10px; border-radius: 8px; }
+        .error { color: red; }
+    </style>
+</head>
+<body>
+    <h1>Resume to Jobs</h1>
+    <form action="/upload" method="post" enctype="multipart/form-data">
+        <input type="file" name="file" accept=".pdf" required>
+        <button type="submit">Upload Resume</button>
+    </form>
+
+    {% if error %}
+        <p class="error">{{ error }}</p>
+    {% endif %}
+
+    {% if jobs %}
+        <h2>Top Jobs</h2>
+        {% for job in jobs %}
+            <div class="job">
+                <strong>{{ job.title }}</strong> (Relevance: {{ job.score }})<br>
+                <a href="{{ job.url }}" target="_blank">Job Link</a>
+                <p>{{ job.content }}</p>
+            </div>
+        {% endfor %}
+    {% endif %}
+</body>
+</html>
